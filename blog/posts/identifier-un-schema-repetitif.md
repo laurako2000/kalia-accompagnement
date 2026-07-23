@@ -4,7 +4,7 @@ description: "Comprendre pourquoi on reproduit les mêmes situations et ce que �
 date: 2026-03-22
 image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80"
 categories: ["Schémas répétitifs"]
-tags : posts
+tags: posts
 ---
 Une situation qu'on revit, encore et encore. Des personnes différentes, des contextes différents, mais toujours cette même sensation, familière et inconfortable. Ce n'est pas de la malchance. C'est un signal.
 
