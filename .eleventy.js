@@ -1,11 +1,11 @@
 module.exports = function (eleventyConfig) {
   // ── Fichiers statiques copiés tels quels (chemins relatifs à la racine du dépôt,
   //    car addPassthroughCopy n'est PAS affecté par dir.input) ──
-  eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy("src/shared.css");
-  eleventyConfig.addPassthroughCopy("src/shared.js");
-  eleventyConfig.addPassthroughCopy("src/robots.txt");
-  eleventyConfig.addPassthroughCopy("src/admin/config.yml");
+  eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("shared.css");
+  eleventyConfig.addPassthroughCopy("shared.js");
+  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy("admin");
 
   // ── Collection des articles de blog (triés du plus récent au plus ancien) ──
   eleventyConfig.addCollection("posts", function (collectionApi) {
