@@ -273,7 +273,7 @@ textarea { min-height:120px; resize:vertical; }
 /* ── OFFER SELECTOR (réserver une séance) ── */
 .offer-choice { display:flex; flex-direction:column; align-items:center; gap:6px; padding:18px 12px; border:1.5px solid var(--grey-bd); border-radius:12px; background:#fff; cursor:pointer; transition:all .2s; font-family:'Inter',sans-serif; text-align:center; }
 .offer-choice:hover { border-color:var(--teal); }
-.offer-choice.active { border-color:var(--teal); background:rgba(44,203,193,.08); box-shadow:0 4px 16px rgba(44,203,193,.15); }
+.offer-choice.active { border-color:var(--teal); background:rgba(44,203,193,.20); box-shadow:0 4px 16px rgba(44,203,193,.15); }
 .offer-choice-name { font-size:.82rem; font-weight:600; color:var(--navy); line-height:1.3; }
 .offer-choice-price { font-family:'Manrope',sans-serif; font-weight:800; font-size:1.15rem; color:var(--teal-d); }
 @media (max-width:640px) { #offerSelector{ grid-template-columns:1fr 1fr !important; } }
