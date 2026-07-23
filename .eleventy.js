@@ -77,7 +77,7 @@ module.exports = function (eleventyConfig) {
   // copiées telles quelles, sans interprétation de leur contenu.
   return {
     dir: {
-      input: "src",
+      input: ".",
       includes: "_includes",
       data: "_data",
       output: "_site",
