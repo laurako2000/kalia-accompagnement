@@ -64,13 +64,24 @@
       {% endif %}
 
       {{ content | safe }}
-<div style="margin-top:50px;padding-top:24px;border-top:1px solid #ddd;text-align:right;">
-  <p>{{ description }}</p>
-  <p class="article-meta">
+<div style="margin-top:50px;padding-top:24px;border-top:1px solid #ddd;">
+  <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+    {% for cat in categories %}
+      <span style="padding:7px 14px;border:1px solid var(--teal);border-radius:30px;color:var(--teal);font-size:0.8rem;">
+        {{ cat }}
+      </span>
+    {% endfor %}
+  </div>
+
+  <p class="article-meta" style="text-align:right;margin-bottom:10px;">
     Publié le {{ date | formatDate }} · {{ content | readingTime }} min de lecture
   </p>
-  <p>{{ categories | join(" · ") }}</p>
+
+  <p style="text-align:right;margin:0;">
+    {{ description }}
+  </p>
 </div>
+
       <!-- ENCADRÉ APPEL À L'ACTION -->
       <div class="article-cta-box">
         <div class="section-label" style="justify-content:flex-start">Passer à l'étape suivante</div>
