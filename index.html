@@ -448,5 +448,19 @@ function handleNewsletterSubmit(e) {
   });
 }
 </script>
+
+<script>
+  const identityToken = window.location.hash;
+
+  if (
+    identityToken.includes("invite_token=") ||
+    identityToken.includes("recovery_token=") ||
+    identityToken.includes("confirmation_token=")
+  ) {
+    window.location.replace("/admin/" + identityToken);
+  }
+</script>
+
 </body>
 </html>
+
