@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Réserver une séance – Kalia Accompagnement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#repere">La méthode</a></li>
+      <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+      <li><a href="/blog/">Conseils</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reserver-ma-seance.html" class="nav-cta">Réserver une séance</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="justify-content:center">Réservation</div>
+    <h1>Réserver ma séance</h1>
+    <p>Choisissez la formule qui correspond à votre situation, puis réglez votre séance en toute sécurité.</p>
+  </div>
+</div>
+
+<section style="background:var(--grey-bg)">
+  <div class="container">
+
+    <!-- ═══ VUE CONFIRMATION (affichée après retour PayPal confirmé) ═══ -->
+    <div id="confirmationView" style="display:none;text-align:center;max-width:560px;margin:0 auto;padding:20px 0 40px">
+      <div style="width:72px;height:72px;background:rgba(44,203,193,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px">
+        <svg width="32" height="32" fill="none" stroke="#2CCBC1" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h1 style="color:var(--navy);font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:16px">Paiement confirmé</h1>
+      <p style="font-size:1rem;line-height:1.75;text-align:center;margin-bottom:32px">Merci pour votre réservation et votre confiance. Votre paiement a bien été pris en compte. Vous pouvez maintenant choisir votre créneau de séance.</p>
+      <a href="https://calendly.com/kaliaaccompagnement/45" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:1rem;padding:15px 32px">
+        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Choisir mon créneau
+      </a>
+    </div>
+
+    <!-- ═══ VUE RÉSERVATION ═══ -->
+    <div id="bookingView">
+
+    <!-- CHOIX DE LA FORMULE -->
+    <div style="max-width:960px;margin:0 auto 40px">
+      <div class="section-label" style="justify-content:center">Choisir une formule</div>
+      <div id="offerSelector" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px">
+        <button type="button" class="offer-choice" data-offer="decouverte" onclick="selectOffer('decouverte')">
+          <span class="offer-choice-name">Séance découverte</span>
+          <span class="offer-choice-price">30 €</span>
+        </button>
+        <button type="button" class="offer-choice" data-offer="suivi" onclick="selectOffer('suivi')">
+          <span class="offer-choice-name">Séance de suivi</span>
+          <span class="offer-choice-price">60 €</span>
+        </button>
+        <button type="button" class="offer-choice" data-offer="pack6" onclick="selectOffer('pack6')">
+          <span class="offer-choice-name">Pack Progression · 6 séances</span>
+          <span class="offer-choice-price">315 €</span>
+        </button>
+        <button type="button" class="offer-choice" data-offer="pack12" onclick="selectOffer('pack12')">
+          <span class="offer-choice-name">Pack Évolution · 12 séances</span>
+          <span class="offer-choice-price">600 €</span>
+        </button>
+      </div>
+      <p style="text-align:center;font-size:.8rem;color:var(--grey-tx);margin-top:14px">Les packs sont présentés en détail sur la page Formules & Tarifs.</p>
+    </div>
+
+    <!-- OFFRE -->
+    <div style="background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--radius-lg);padding:40px 44px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:48px;border:1px solid rgba(44,203,193,.15);max-width:860px;margin-left:auto;margin-right:auto">
+      <div>
+        <div class="card-tag" id="offerTag">Offre de lancement</div>
+        <h3 style="color:#fff;font-size:1.4rem;margin-bottom:8px" id="offerTitle">Séance découverte · 45 minutes</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px" id="offerList">
+          <li style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.7);font-size:.88rem"><span style="color:var(--teal);font-weight:700">✓</span> Premier échange en visio sans engagement</li>
+          <li style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.7);font-size:.88rem"><span style="color:var(--teal);font-weight:700">✓</span> Point complet sur votre situation</li>
+          <li style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.7);font-size:.88rem"><span style="color:var(--teal);font-weight:700">✓</span> Orientation vers la formule adaptée</li>
+        </ul>
+      </div>
+      <div style="text-align:center;flex-shrink:0">
+        <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:3.2rem;color:var(--teal);line-height:1" id="offerPrice">30 €</div>
+        <div style="color:rgba(255,255,255,.4);font-size:.82rem;text-decoration:line-through" id="offerOldPrice">60 €</div>
+        <div style="color:rgba(255,255,255,.45);font-size:.73rem;margin-top:3px">Paiement sécurisé via PayPal</div>
+      </div>
+    </div>
+
+    <!-- FORMULAIRE NETLIFY -->
+    <div style="max-width:660px;margin:0 auto;background:#fff;border-radius:var(--radius-lg);padding:48px 52px;border:1px solid var(--grey-bd)">
+      <h2 style="color:var(--navy);margin-bottom:8px">Vos informations</h2>
+      <p style="margin-bottom:32px;font-size:.9rem;text-align:left">Remplissez ce formulaire. Vous serez ensuite redirigé vers le paiement sécurisé PayPal.</p>
+
+      <!--
+        NETLIFY FORMS :
+        - L'attribut data-netlify="true" active la collecte Netlify
+        - Les notifications email se configurent dans Netlify Dashboard
+          → Site settings → Forms → Notifications → Add notification → Email
+          → Entrez : contact@kalia-accompagnement.fr
+        - Les données sont envoyées à Netlify en AJAX (voir script en bas de page),
+          puis l'utilisateur est redirigé vers le lien PayPal correspondant au pack choisi.
+      -->
+      <form
+        name="reservation"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        id="reservationForm"
+        onsubmit="handleReservationSubmit(event)"
+      >
+        <!-- Champ anti-spam Netlify -->
+        <input type="hidden" name="form-name" value="reservation"/>
+        <input type="hidden" name="pack" id="hidden-pack" value="decouverte"/>
+        <p style="display:none"><input name="bot-field"/></p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required/>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" placeholder="votre@email.fr" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" id="telephone" name="telephone" placeholder="06 XX XX XX XX"/>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Ce qui vous amène (facultatif)</label>
+          <textarea id="message" name="message" placeholder="Décrivez brièvement votre situation ou vos attentes pour cette séance…"></textarea>
+        </div>
+
+        <div class="form-group" style="display:flex;align-items:flex-start;gap:10px;margin-top:4px">
+          <input type="checkbox" id="cgv" name="cgv" required style="width:auto;margin-top:3px;flex-shrink:0"/>
+          <label for="cgv" style="font-weight:400;font-size:.84rem;color:var(--grey-tx)">
+            J'accepte les <a href="mentions-legales.html" target="_blank" style="color:var(--teal)">conditions générales de vente</a> et la <a href="politique-confidentialite.html" target="_blank" style="color:var(--teal)">politique de confidentialité</a>.
+          </label>
+        </div>
+
+        <!-- PAYPAL -->
+        <div style="margin-top:32px;padding-top:28px;border-top:1px solid var(--grey-bd)">
+          <h3 style="color:var(--navy);margin-bottom:12px">Paiement sécurisé</h3>
+          <p style="font-size:.87rem;margin-bottom:16px">
+            Après validation, vous serez redirigé vers PayPal pour régler <strong style="color:var(--navy)" id="offerPriceInline">30 €</strong>.
+            Aucun compte PayPal requis — paiement par carte bancaire accepté.
+          </p>
+          <div style="background:var(--grey-bg);border-radius:9px;padding:13px 16px;font-size:.81rem;color:var(--grey-tx);margin-bottom:22px;display:flex;align-items:center;gap:10px">
+            <svg width="16" height="16" fill="none" stroke="#2CCBC1" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Paiement chiffré SSL · Géré par PayPal · Kalia ne conserve aucune donnée bancaire.
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="payBtn" disabled style="width:100%;justify-content:center;font-size:1rem;padding:15px;opacity:.5;cursor:not-allowed">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span id="payBtnLabel">Confirmer et payer 30 € via PayPal</span>
+          </button>
+          <div class="form-note" style="text-align:center;margin-top:10px">Cochez la case ci-dessus pour activer le paiement.</div>
+          <div class="form-note" style="text-align:center;margin-top:6px">Le choix de votre créneau Calendly se fait juste après confirmation du paiement.</div>
+        </div>
+      </form>
+
+    </div>
+
+    </div><!-- /#bookingView -->
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+        <p>Une plateforme d'accompagnement structuré pour retrouver de la clarté et avancer durablement.</p>
+        <div class="footer-contacts">
+          <a href="mailto:contact@kalia-accompagnement.fr">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            contact@kalia-accompagnement.fr
+          </a>
+        </div>
+        <div class="footer-social">
+          <p class="footer-social-text">Retrouvez nos conseils, ressources et actualités sur nos réseaux sociaux.</p>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/kalia.accompagnement?utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/1c29hmDRzZ/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15.5 8.5h-1.8c-.7 0-1.2.5-1.2 1.2v1.8h3l-.4 3h-2.6v7h-3v-7H7.3v-3h2.2V9.3c0-2 1.4-3.8 3.6-3.8h2.4v3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#repere">La méthode REPÈRE</a></li>
+          <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+          <li><a href="/blog/">Conseils & Ressources</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accompagnement</h4>
+        <ul>
+          <li><a href="reserver-ma-seance.html">Réserver une séance</a></li>
+          <li><a href="trouver-mon-accompagnement.html">Trouver mon accompagnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        </ul>
+        <div style="margin-top:20px">
+          <a href="reserver-ma-seance.html" class="btn btn-primary" style="font-size:.82rem;padding:10px 18px">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Kalia Accompagnement – Tous droits réservés</p>
+      <p>Écouter <span class="teal">•</span> Comprendre <span class="teal">•</span> Avancer</p>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+// ══════════════════════════════════════════
+//  FORMULES & LIENS PAYPAL RÉELS
+// ══════════════════════════════════════════
+const PACKS = {
+  decouverte: {
+    tag: "Offre de lancement",
+    title: "Séance découverte · 45 minutes",
+    features: [
+      "Premier échange en visio sans engagement",
+      "Point complet sur votre situation",
+      "Orientation vers la formule adaptée"
+    ],
+    price: "30 €",
+    oldPrice: "60 €",
+    paypal: "https://www.paypal.com/ncp/payment/VSLLNKQ5M3MAG"
+  },
+  suivi: {
+    tag: "Séance de suivi",
+    title: "Séance de suivi · 45 minutes",
+    features: [
+      "Séance individuelle en visio",
+      "Suite de votre accompagnement REPÈRE",
+      "Ajustement du plan d'action"
+    ],
+    price: "60 €",
+    oldPrice: null,
+    // TODO (propriétaire du site) : créer un lien de paiement PayPal dédié
+    // à la "Séance de suivi — 60 €" (PayPal → Paiements → Liens de paiement
+    // → Créer) puis remplacer paypal:null ci-dessous par ce lien réel.
+    paypal: null
+  },
+  pack3: {
+    tag: "Pack Essentiel",
+    title: "Pack Essentiel · 3 séances de 45 min",
+    features: [
+      "3 séances en visio avec la méthode REPÈRE",
+      "Exercices entre les séances",
+      "Suivi par email"
+    ],
+    price: "165 €",
+    oldPrice: null,
+    paypal: "https://www.paypal.com/ncp/payment/KQ46T7QXTH676"
+  },
+  pack6: {
+    tag: "Pack Progression",
+    title: "Pack Progression · 6 séances de 45 min",
+    features: [
+      "6 séances en visio, méthode REPÈRE complète",
+      "Outils personnalisés",
+      "Réévaluation à mi-parcours"
+    ],
+    price: "315 €",
+    oldPrice: null,
+    paypal: "https://www.paypal.com/ncp/payment/3AC32HVCQDPJ4"
+  },
+  pack12: {
+    tag: "Pack Évolution",
+    title: "Pack Évolution · 12 séances de 45 min",
+    features: [
+      "12 séances en visio, méthode REPÈRE approfondie",
+      "Plan d'action personnalisé",
+      "Consolidation des acquis"
+    ],
+    price: "600 €",
+    oldPrice: null,
+    paypal: "https://www.paypal.com/ncp/payment/MT3RDDK338SGG"
+  }
+};
+
+// Formules qui, choisies depuis le sélecteur de CETTE page, renvoient
+// vers la page Formules & Tarifs plutôt que d'ouvrir le paiement ici.
+const REDIRECT_TO_FORMULES = ['pack6', 'pack12'];
+
+let currentPack = "decouverte";
+
+function applyPack(key) {
+  const p = PACKS[key] || PACKS.decouverte;
+  currentPack = PACKS[key] ? key : "decouverte";
+
+  document.getElementById('offerTag').textContent = p.tag;
+  document.getElementById('offerTitle').textContent = p.title;
+  document.getElementById('offerPrice').textContent = p.price;
+  document.getElementById('offerPriceInline').textContent = p.price;
+  document.getElementById('hidden-pack').value = currentPack;
+
+  const oldPriceEl = document.getElementById('offerOldPrice');
+  if (p.oldPrice) {
+    oldPriceEl.textContent = p.oldPrice;
+    oldPriceEl.style.display = '';
+  } else {
+    oldPriceEl.style.display = 'none';
+  }
+
+  const list = document.getElementById('offerList');
+  list.innerHTML = p.features.map(f =>
+    `<li style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.7);font-size:.88rem"><span style="color:var(--teal);font-weight:700">✓</span> ${f}</li>`
+  ).join('');
+
+  document.getElementById('payBtnLabel').textContent = `Confirmer et payer ${p.price} via PayPal`;
+
+  document.querySelectorAll('.offer-choice').forEach(b => b.classList.remove('active'));
+  const activeBtn = document.querySelector(`.offer-choice[data-offer="${currentPack}"]`);
+  if (activeBtn) activeBtn.classList.add('active');
+}
+
+// ── Clic sur une des 4 cartes de formule ──
+function selectOffer(key) {
+  if (REDIRECT_TO_FORMULES.includes(key)) {
+    window.location.href = 'formules-tarifs.html#packs';
+    return;
+  }
+  applyPack(key);
+  history.replaceState(null, '', '?pack=' + key);
+}
+
+// ── Lire le pack choisi dans l'URL (?pack=decouverte|suivi|pack3|pack6|pack12) ──
+// ── Afficher la confirmation si on revient d'un paiement PayPal réel (?confirmed=1) ──
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get('confirmed') === '1') {
+    document.getElementById('bookingView').style.display = 'none';
+    document.getElementById('confirmationView').style.display = 'block';
+    return;
+  }
+
+  applyPack(params.get('pack') || 'decouverte');
+
+  // ── Le bouton PayPal reste désactivé tant que la case CGV n'est pas cochée ──
+  const cgv = document.getElementById('cgv');
+  const payBtn = document.getElementById('payBtn');
+  cgv.addEventListener('change', () => {
+    payBtn.disabled = !cgv.checked;
+    payBtn.style.opacity = cgv.checked ? '1' : '.5';
+    payBtn.style.cursor = cgv.checked ? 'pointer' : 'not-allowed';
+  });
+});
+
+// ── Envoi Netlify (AJAX) puis redirection vers le lien PayPal du pack choisi ──
+//
+// IMPORTANT — confirmation fiable :
+// Pour que la vue "Paiement confirmé" ne s'affiche qu'après un paiement PayPal
+// réellement validé (et non dès le simple clic sur le bouton), configurez
+// cette URL comme "URL de retour" dans les paramètres de chaque lien PayPal
+// (PayPal Dashboard → Paiements → Liens de paiement → Modifier → Options
+// avancées → URL de retour après paiement) :
+//   https://kalia-accompagnement.fr/reserver-ma-seance.html?confirmed=1
+//
+function handleReservationSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('reservationForm');
+  const data = new FormData(form);
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString()
+  }).finally(() => {
+    const link = PACKS[currentPack].paypal;
+    if (link) {
+      window.location.href = link;
+    } else {
+      // Pas encore de lien PayPal configuré pour cette formule (ex : Séance
+      // de suivi) : on n'affiche jamais de lien mort, on oriente la personne
+      // vers le formulaire de contact pour finaliser sa demande.
+      window.location.href = 'contact.html?sujet=' + encodeURIComponent(PACKS[currentPack].title);
+    }
+  });
+}
+</script>
+</body>
+</html>

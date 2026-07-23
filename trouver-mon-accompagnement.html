@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trouver mon accompagnement – Kalia Accompagnement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .quiz-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 52px 56px;
+      border: 1px solid var(--grey-bd);
+    }
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+
+    .quiz-progress {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    .quiz-progress-bar {
+      flex: 1;
+      height: 4px;
+      background: var(--grey-bd);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .quiz-progress-fill {
+      height: 100%;
+      background: var(--teal);
+      border-radius: 2px;
+      transition: width .4s ease;
+    }
+    .quiz-progress-label {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--grey-tx);
+      white-space: nowrap;
+    }
+
+    .quiz-q-num {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .quiz-q-title {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 1.15rem;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .quiz-q-sub {
+      font-size: .85rem;
+      color: var(--grey-tx);
+      margin-bottom: 24px;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .choice-grid.single-col { grid-template-columns: 1fr; }
+    .choice-grid.three-col  { grid-template-columns: 1fr 1fr 1fr; }
+
+    .choice-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 1.5px solid var(--grey-bd);
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      color: var(--navy);
+      background: #fff;
+      text-align: left;
+      transition: all .2s;
+      line-height: 1.4;
+    }
+    .choice-btn:hover {
+      border-color: var(--teal);
+      background: rgba(44,203,193,.05);
+    }
+    .choice-btn.selected {
+      border-color: var(--teal);
+      background: rgba(44,203,193,.09);
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .choice-btn .choice-dot {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--grey-bd);
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .choice-btn.selected .choice-dot {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+    .choice-btn.selected .choice-dot::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .choice-check {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--grey-bd);
+      border-radius: 4px;
+      flex-shrink: 0;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .choice-btn.selected .choice-check {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+    .choice-btn.selected .choice-check::after {
+      content: '✓';
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 700;
+    }
+
+    .quiz-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .quiz-nav-back {
+      background: none;
+      border: none;
+      color: var(--grey-tx);
+      font-size: .85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0;
+      transition: color .2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .quiz-nav-back:hover { color: var(--navy); }
+
+    /* RÉSULTAT */
+    .result-box {
+      display: none;
+      text-align: center;
+    }
+    .result-box.show { display: block; }
+    .result-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(44,203,193,.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .result-tag {
+      display: inline-flex;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .result-title {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .result-desc {
+      font-size: .95rem;
+      line-height: 1.75;
+      color: #3d4a5c;
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+    .result-card {
+      background: var(--grey-bg);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      text-align: left;
+      margin: 24px 0;
+      border-left: 3px solid var(--teal);
+    }
+    .result-card h4 {
+      color: var(--navy);
+      margin-bottom: 8px;
+      font-size: .97rem;
+    }
+    .result-card p { font-size: .87rem; line-height: 1.65; }
+    .result-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    /* Contact final */
+    .quiz-contact {
+      background: var(--grey-bg);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-top: 32px;
+      border: 1px solid var(--grey-bd);
+    }
+    .quiz-contact h4 {
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .quiz-contact p { font-size: .86rem; margin-bottom: 0; }
+
+    @media (max-width: 640px) {
+      .quiz-wrapper { padding: 32px 22px; }
+      .choice-grid { grid-template-columns: 1fr; }
+      .choice-grid.three-col { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#repere">La méthode</a></li>
+      <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+      <li><a href="/blog/">Conseils</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reserver-ma-seance.html" class="nav-cta">Réserver une séance</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="justify-content:center">Orientation</div>
+    <h1>Je trouve mon accompagnement</h1>
+    <p>Quelques questions pour identifier votre situation et vous orienter vers l'accompagnement le plus adapté.</p>
+  </div>
+</div>
+
+<section style="background:var(--grey-bg)">
+  <div class="container">
+    <div class="quiz-wrapper">
+
+      <!-- BARRE DE PROGRESSION -->
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="progressFill" style="width:14%"></div>
+        </div>
+        <div class="quiz-progress-label" id="progressLabel">1 / 7</div>
+      </div>
+
+      <!-- ═══ QUESTION 1 ═══ -->
+      <div class="quiz-step active" id="step-1">
+        <div class="quiz-q-num">Question 1</div>
+        <div class="quiz-q-title">Quel sujet vous amène aujourd'hui ?</div>
+        <div class="quiz-q-sub">Sélectionnez tout ce qui s'applique à votre situation.</div>
+        <div class="choice-grid">
+          <button type="button" class="choice-btn multi" data-val="burnout" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Burn-out / épuisement
+          </button>
+          <button type="button" class="choice-btn multi" data-val="relations" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Relations difficiles
+          </button>
+          <button type="button" class="choice-btn multi" data-val="confiance" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Confiance en soi
+          </button>
+          <button type="button" class="choice-btn multi" data-val="transition" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Transition de vie
+          </button>
+          <button type="button" class="choice-btn multi" data-val="schemas" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Schémas répétitifs
+          </button>
+          <button type="button" class="choice-btn multi" data-val="separation" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Séparation / rupture
+          </button>
+          <button type="button" class="choice-btn multi" data-val="sens" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Perte de sens
+          </button>
+          <button type="button" class="choice-btn multi" data-val="autre" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Autre / Je ne sais pas
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <span></span>
+          <button type="button" class="btn btn-primary" onclick="nextStep(1)" id="btn-next-1" disabled>
+            Continuer →
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══ QUESTION 2 ═══ -->
+      <div class="quiz-step" id="step-2">
+        <div class="quiz-q-num">Question 2</div>
+        <div class="quiz-q-title">Depuis combien de temps cette situation dure-t-elle ?</div>
+        <div class="quiz-q-sub">Choisissez l'option qui correspond le mieux.</div>
+        <div class="choice-grid single-col">
+          <button type="button" class="choice-btn single" data-val="recent" onclick="selectSingle(this,2)">
+            <div class="choice-dot"></div> Moins d'un mois — c'est récent
+          </button>
+          <button type="button" class="choice-btn single" data-val="quelques_mois" onclick="selectSingle(this,2)">
+            <div class="choice-dot"></div> Quelques mois
+          </button>
+          <button type="button" class="choice-btn single" data-val="plus_an" onclick="selectSingle(this,2)">
+            <div class="choice-dot"></div> Plus d'un an
+          </button>
+          <button type="button" class="choice-btn single" data-val="tres_long" onclick="selectSingle(this,2)">
+            <div class="choice-dot"></div> Depuis très longtemps — c'est récurrent
+          </button>
+          <button type="button" class="choice-btn single" data-val="sais_pas" onclick="selectSingle(this,2)">
+            <div class="choice-dot"></div> Je ne sais pas vraiment
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button type="button" class="quiz-nav-back" onclick="prevStep(2)">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Retour
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══ QUESTION 3 ═══ -->
+      <div class="quiz-step" id="step-3">
+        <div class="quiz-q-num">Question 3</div>
+        <div class="quiz-q-title">Quel est votre principal objectif aujourd'hui ?</div>
+        <div class="quiz-q-sub">Une seule réponse — celle qui vous correspond le plus.</div>
+        <div class="choice-grid single-col">
+          <button type="button" class="choice-btn single" data-val="comprendre" onclick="selectSingle(this,3)">
+            <div class="choice-dot"></div> Comprendre ce qui se passe et mettre des mots dessus
+          </button>
+          <button type="button" class="choice-btn single" data-val="sortir" onclick="selectSingle(this,3)">
+            <div class="choice-dot"></div> Sortir d'une situation bloquée ou douloureuse
+          </button>
+          <button type="button" class="choice-btn single" data-val="objectifs" onclick="selectSingle(this,3)">
+            <div class="choice-dot"></div> Définir des objectifs clairs et passer à l'action
+          </button>
+          <button type="button" class="choice-btn single" data-val="schemas_stop" onclick="selectSingle(this,3)">
+            <div class="choice-dot"></div> Identifier et arrêter des schémas répétitifs
+          </button>
+          <button type="button" class="choice-btn single" data-val="confiance_obj" onclick="selectSingle(this,3)">
+            <div class="choice-dot"></div> Retrouver confiance en moi et en l'avenir
+          </button>
+          <button type="button" class="choice-btn single" data-val="cap" onclick="selectSingle(this,3)">
+            <div class="choice-dot"></div> Retrouver un cap et du sens dans ma vie
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button type="button" class="quiz-nav-back" onclick="prevStep(3)">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Retour
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══ QUESTION 4 ═══ -->
+      <div class="quiz-step" id="step-4">
+        <div class="quiz-q-num">Question 4</div>
+        <div class="quiz-q-title">Comment décririez-vous votre état en ce moment ?</div>
+        <div class="quiz-q-sub">Sélectionnez tout ce qui vous correspond.</div>
+        <div class="choice-grid">
+          <button type="button" class="choice-btn multi" data-val="fatigue" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Fatigué(e) / épuisé(e)
+          </button>
+          <button type="button" class="choice-btn multi" data-val="perdu" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Perdu(e) / sans direction
+          </button>
+          <button type="button" class="choice-btn multi" data-val="bloque" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Bloqué(e) / j'avance plus
+          </button>
+          <button type="button" class="choice-btn multi" data-val="anxieux" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Anxieux(se) / stressé(e)
+          </button>
+          <button type="button" class="choice-btn multi" data-val="triste" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Triste / à plat
+          </button>
+          <button type="button" class="choice-btn multi" data-val="motive" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Motivé(e) mais sans méthode
+          </button>
+          <button type="button" class="choice-btn multi" data-val="colere" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> En colère / frustré(e)
+          </button>
+          <button type="button" class="choice-btn multi" data-val="vide" onclick="toggleMulti(this)">
+            <div class="choice-check"></div> Vide / déconnecté(e)
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button type="button" class="quiz-nav-back" onclick="prevStep(4)">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Retour
+          </button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(4)" id="btn-next-4" disabled>
+            Continuer →
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══ QUESTION 5 ═══ -->
+      <div class="quiz-step" id="step-5">
+        <div class="quiz-q-num">Question 5</div>
+        <div class="quiz-q-title">Avez-vous déjà essayé de travailler sur ce sujet ?</div>
+        <div class="quiz-q-sub">Une seule réponse.</div>
+        <div class="choice-grid single-col">
+          <button type="button" class="choice-btn single" data-val="jamais" onclick="selectSingle(this,5)">
+            <div class="choice-dot"></div> Non, c'est la première fois que j'y pense sérieusement
+          </button>
+          <button type="button" class="choice-btn single" data-val="seul" onclick="selectSingle(this,5)">
+            <div class="choice-dot"></div> Oui, j'ai essayé seul(e) mais sans résultat durable
+          </button>
+          <button type="button" class="choice-btn single" data-val="autre_accomp" onclick="selectSingle(this,5)">
+            <div class="choice-dot"></div> Oui, j'ai déjà eu un accompagnement ou une thérapie
+          </button>
+          <button type="button" class="choice-btn single" data-val="lecture" onclick="selectSingle(this,5)">
+            <div class="choice-dot"></div> Oui, via des livres, podcasts, formations en ligne
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button type="button" class="quiz-nav-back" onclick="prevStep(5)">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Retour
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══ QUESTION 6 ═══ -->
+      <div class="quiz-step" id="step-6">
+        <div class="quiz-q-num">Question 6</div>
+        <div class="quiz-q-title">Seriez-vous intéressé(e) par des ateliers ou groupes d'échange ?</div>
+        <div class="quiz-q-sub">En complément ou en alternative à un accompagnement individuel.</div>
+        <div class="choice-grid three-col">
+          <button type="button" class="choice-btn single" data-val="oui" onclick="selectSingle(this,6)">
+            <div class="choice-dot"></div> Oui, volontiers
+          </button>
+          <button type="button" class="choice-btn single" data-val="peutetre" onclick="selectSingle(this,6)">
+            <div class="choice-dot"></div> Peut-être
+          </button>
+          <button type="button" class="choice-btn single" data-val="non" onclick="selectSingle(this,6)">
+            <div class="choice-dot"></div> Je préfère l'individuel
+          </button>
+        </div>
+        <div class="quiz-nav">
+          <button type="button" class="quiz-nav-back" onclick="prevStep(6)">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Retour
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══ QUESTION 7 — CONTACT ═══ -->
+      <div class="quiz-step" id="step-7">
+        <div class="quiz-q-num">Dernière étape</div>
+        <div class="quiz-q-title">Recevez votre orientation personnalisée</div>
+        <div class="quiz-q-sub">Il ne reste qu'une dernière étape. Indiquez votre prénom et votre adresse e-mail afin que nous puissions vous envoyer votre orientation personnalisée.</div>
+
+        <!--
+          NETLIFY FORMS — Formulaire d'orientation
+          Les résultats du quiz sont injectés en champs cachés avant soumission (usage interne / CRM).
+          Ce formulaire est envoyé en AJAX (voir script en bas de page) pour afficher
+          une confirmation immédiate sans dépendre d'une redirection de page.
+          Configurez la notification email dans :
+          Netlify Dashboard → Site settings → Forms → Notifications
+          → Add notification → Email → contact@kalia-accompagnement.fr
+        -->
+        <form
+          name="orientation"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          id="orientationForm"
+          onsubmit="handleOrientationSubmit(event)"
+        >
+          <input type="hidden" name="form-name" value="orientation"/>
+          <p style="display:none"><input name="bot-field"/></p>
+          <!-- Champs cachés remplis par le quiz (usage interne) -->
+          <input type="hidden" name="sujets" id="hidden-sujets"/>
+          <input type="hidden" name="duree" id="hidden-duree"/>
+          <input type="hidden" name="objectif" id="hidden-objectif"/>
+          <input type="hidden" name="etat" id="hidden-etat"/>
+          <input type="hidden" name="historique" id="hidden-historique"/>
+          <input type="hidden" name="ateliers" id="hidden-ateliers"/>
+          <input type="hidden" name="recommandation" id="hidden-recommandation"/>
+
+          <div class="form-group">
+            <label for="q-prenom">Prénom *</label>
+            <input type="text" id="q-prenom" name="prenom" placeholder="Votre prénom" required/>
+          </div>
+          <div class="form-group">
+            <label for="q-email">Email *</label>
+            <input type="email" id="q-email" name="email" placeholder="votre@email.fr" required/>
+          </div>
+
+          <div class="quiz-nav" style="margin-top:24px">
+            <button type="button" class="quiz-nav-back" onclick="prevStep(7)">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Retour
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Recevoir mon orientation
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ═══ MERCI (affiché après envoi réussi) ═══ -->
+      <div class="result-box" id="resultBox">
+        <div class="result-icon">
+          <svg width="32" height="32" fill="none" stroke="#2CCBC1" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="result-title">Merci pour votre confiance.</div>
+        <div class="result-desc">Votre demande a bien été prise en compte. Vous recevrez prochainement votre orientation personnalisée par e-mail.</div>
+      </div>
+
+    </div><!-- /.quiz-wrapper -->
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+        <p>Une plateforme d'accompagnement structuré pour retrouver de la clarté et avancer durablement.</p>
+        <div class="footer-contacts">
+          <a href="mailto:contact@kalia-accompagnement.fr">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            contact@kalia-accompagnement.fr
+          </a>
+        </div>
+        <div class="footer-social">
+          <p class="footer-social-text">Retrouvez nos conseils, ressources et actualités sur nos réseaux sociaux.</p>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/kalia.accompagnement?utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/1c29hmDRzZ/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15.5 8.5h-1.8c-.7 0-1.2.5-1.2 1.2v1.8h3l-.4 3h-2.6v7h-3v-7H7.3v-3h2.2V9.3c0-2 1.4-3.8 3.6-3.8h2.4v3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#repere">La méthode REPÈRE</a></li>
+          <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+          <li><a href="/blog/">Conseils & Ressources</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accompagnement</h4>
+        <ul>
+          <li><a href="reserver-ma-seance.html">Réserver une séance</a></li>
+          <li><a href="trouver-mon-accompagnement.html">Trouver mon accompagnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Kalia Accompagnement – Tous droits réservés</p>
+      <p>Écouter <span class="teal">•</span> Comprendre <span class="teal">•</span> Avancer</p>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+// ══════════════════════════════════════════
+//  QUIZ — État global
+// ══════════════════════════════════════════
+const TOTAL_STEPS = 7;
+const answers = {
+  sujets: [],
+  duree: '',
+  objectif: '',
+  etat: [],
+  historique: '',
+  ateliers: ''
+};
+
+// ── Mise à jour barre de progression ──
+function updateProgress(step) {
+  const pct = Math.round((step / TOTAL_STEPS) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = step + ' / ' + TOTAL_STEPS;
+}
+
+// ── Navigation ──
+function showStep(n) {
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('step-' + n);
+  if (el) {
+    el.classList.add('active');
+    updateProgress(n);
+    window.scrollTo({ top: document.querySelector('.quiz-wrapper').offsetTop - 90, behavior: 'smooth' });
+  }
+}
+
+function nextStep(current) {
+  showStep(current + 1);
+}
+
+function prevStep(current) {
+  showStep(current - 1);
+}
+
+// ── Choix unique ──
+function selectSingle(btn, step) {
+  const group = btn.closest('.choice-grid');
+  group.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+
+  // Sauvegarder
+  const val = btn.dataset.val;
+  if (step === 2) answers.duree = val;
+  if (step === 3) answers.objectif = val;
+  if (step === 5) answers.historique = val;
+  if (step === 6) answers.ateliers = val;
+
+  // Auto-avancer après 300ms
+  setTimeout(() => nextStep(step), 300);
+}
+
+// ── Choix multiples ──
+function toggleMulti(btn) {
+  btn.classList.toggle('selected');
+
+  // Activer bouton Continuer si au moins 1 sélection
+  const step = btn.closest('.quiz-step');
+  const stepId = parseInt(step.id.replace('step-', ''));
+  const anySelected = step.querySelectorAll('.choice-btn.selected').length > 0;
+  const nextBtn = document.getElementById('btn-next-' + stepId);
+  if (nextBtn) nextBtn.disabled = !anySelected;
+
+  // Sauvegarder Q1
+  if (stepId === 1) {
+    answers.sujets = Array.from(
+      document.querySelectorAll('#step-1 .choice-btn.selected')
+    ).map(b => b.dataset.val);
+  }
+  // Sauvegarder Q4
+  if (stepId === 4) {
+    answers.etat = Array.from(
+      document.querySelectorAll('#step-4 .choice-btn.selected')
+    ).map(b => b.dataset.val);
+  }
+}
+
+// ══════════════════════════════════════════
+//  CALCUL DE LA RECOMMANDATION
+// ══════════════════════════════════════════
+function computeRecommendation() {
+  const s = answers.sujets;
+  const o = answers.objectif;
+  const d = answers.duree;
+  const h = answers.historique;
+
+  // Scores par profil
+  let scores = {
+    decouverte: 0,
+    pack3: 0,
+    pack6: 0,
+    pack12: 0
+  };
+
+  // Durée
+  if (d === 'recent') scores.decouverte += 3;
+  if (d === 'quelques_mois') { scores.pack3 += 2; scores.decouverte += 1; }
+  if (d === 'plus_an') { scores.pack6 += 3; scores.pack3 += 1; }
+  if (d === 'tres_long') { scores.pack12 += 3; scores.pack6 += 2; }
+  if (d === 'sais_pas') scores.decouverte += 2;
+
+  // Objectif
+  if (o === 'comprendre') { scores.decouverte += 2; scores.pack3 += 1; }
+  if (o === 'sortir') { scores.pack6 += 2; scores.pack3 += 1; }
+  if (o === 'objectifs') { scores.pack3 += 2; scores.pack6 += 1; }
+  if (o === 'schemas_stop') { scores.pack12 += 2; scores.pack6 += 2; }
+  if (o === 'confiance_obj') { scores.pack6 += 2; scores.pack12 += 1; }
+  if (o === 'cap') { scores.pack6 += 2; scores.pack3 += 1; }
+
+  // Sujets
+  if (s.includes('burnout')) { scores.pack6 += 2; scores.pack12 += 1; }
+  if (s.includes('schemas')) { scores.pack12 += 2; scores.pack6 += 1; }
+  if (s.includes('transition')) { scores.pack6 += 1; scores.pack3 += 1; }
+  if (s.includes('separation')) { scores.pack3 += 2; scores.pack6 += 1; }
+  if (s.includes('confiance')) { scores.pack6 += 1; }
+  if (s.includes('autre') || s.length === 0) scores.decouverte += 2;
+
+  // Historique
+  if (h === 'jamais') scores.decouverte += 2;
+  if (h === 'seul') { scores.pack6 += 2; scores.pack3 += 1; }
+  if (h === 'autre_accomp') { scores.pack12 += 1; scores.pack6 += 1; }
+
+  // Trouver le max
+  const best = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+  return best;
+}
+
+// ── Envoi AJAX à Netlify puis affichage d'un simple message de remerciement ──
+function handleOrientationSubmit(e) {
+  e.preventDefault();
+
+  const rec = computeRecommendation();
+  document.getElementById('hidden-sujets').value = answers.sujets.join(', ');
+  document.getElementById('hidden-duree').value = answers.duree;
+  document.getElementById('hidden-objectif').value = answers.objectif;
+  document.getElementById('hidden-etat').value = answers.etat.join(', ');
+  document.getElementById('hidden-historique').value = answers.historique;
+  document.getElementById('hidden-ateliers').value = answers.ateliers;
+  document.getElementById('hidden-recommandation').value = rec;
+
+  const form = document.getElementById('orientationForm');
+  const data = new FormData(form);
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString()
+  }).finally(() => {
+    showThankYou();
+  });
+}
+
+function showThankYou() {
+  // Masquer toutes les étapes, afficher le message de remerciement
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressLabel').textContent = '✓ Terminé';
+  document.getElementById('resultBox').classList.add('show');
+
+  window.scrollTo({ top: document.querySelector('.quiz-wrapper').offsetTop - 90, behavior: 'smooth' });
+}
+
+// ── Init : désactiver boutons "Continuer" multi ──
+document.addEventListener('DOMContentLoaded', () => {
+  ['btn-next-1', 'btn-next-4'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.disabled = true;
+  });
+});
+</script>
+</body>
+</html>

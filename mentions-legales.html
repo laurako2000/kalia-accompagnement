@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentions légales – Kalia Accompagnement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .legal-section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--grey-bd);
+    }
+    .legal-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .legal-section h2 {
+      color: var(--navy);
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .legal-section h2::before {
+      content: '';
+      width: 4px;
+      height: 22px;
+      background: var(--teal);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .legal-section h3 {
+      color: var(--navy);
+      font-size: 1rem;
+      margin: 24px 0 10px;
+    }
+    .legal-section p {
+      font-size: .93rem;
+      line-height: 1.8;
+      color: #3d4a5c;
+      margin-bottom: 12px;
+    }
+    .legal-section ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .legal-section ul li {
+      font-size: .92rem;
+      line-height: 1.75;
+      color: #3d4a5c;
+      margin-bottom: 6px;
+    }
+    .legal-info-box {
+      background: var(--grey-bg);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      margin: 16px 0;
+      border-left: 3px solid var(--teal);
+    }
+    .legal-info-box p {
+      margin-bottom: 6px;
+      font-size: .9rem;
+    }
+    .legal-info-box p:last-child {
+      margin-bottom: 0;
+    }
+    .legal-info-box strong {
+      color: var(--navy);
+    }
+    .legal-toc {
+      background: var(--grey-bg);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      border: 1px solid var(--grey-bd);
+    }
+    .legal-toc h3 {
+      color: var(--navy);
+      font-size: .95rem;
+      margin-bottom: 16px;
+      font-family: 'Manrope', sans-serif;
+    }
+    .legal-toc ol {
+      padding-left: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 32px;
+    }
+    .legal-toc ol li {
+      font-size: .85rem;
+      color: var(--grey-tx);
+      line-height: 1.5;
+    }
+    .legal-toc ol li a {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .legal-toc ol li a:hover {
+      color: var(--teal-d);
+    }
+    .legal-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      color: var(--grey-tx);
+      background: var(--grey-bg);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-top: 8px;
+    }
+    .legal-date::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
+    }
+    @media (max-width: 640px) {
+      .legal-toc ol { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#repere">La méthode</a></li>
+      <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+      <li><a href="/blog/">Conseils</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reserver-ma-seance.html" class="nav-cta">Réserver une séance</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="justify-content:center">Informations légales</div>
+    <h1>Mentions légales</h1>
+    <p>Informations légales relatives au site Kalia Accompagnement, conformément à la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique.</p>
+    <div class="legal-date">Dernière mise à jour : juin 2024</div>
+  </div>
+</div>
+
+<!-- CONTENU LÉGAL -->
+<section style="background: var(--grey-bg); padding: 72px 0;">
+  <div class="container">
+    <div style="max-width: 860px; margin: 0 auto;">
+
+      <!-- TABLE DES MATIÈRES -->
+      <div class="legal-toc">
+        <h3>Sommaire</h3>
+        <ol>
+          <li><a href="#editeur">Éditeur du site</a></li>
+          <li><a href="#hebergeur">Hébergeur</a></li>
+          <li><a href="#contact-legal">Contact</a></li>
+          <li><a href="#propriete">Propriété intellectuelle</a></li>
+          <li><a href="#responsabilite">Limitation de responsabilité</a></li>
+          <li><a href="#donnees">Protection des données personnelles</a></li>
+          <li><a href="#cookies">Cookies</a></li>
+          <li><a href="#liens">Liens hypertextes</a></li>
+          <li><a href="#droit">Droit applicable</a></li>
+        </ol>
+      </div>
+
+      <!-- 1. ÉDITEUR -->
+      <div class="legal-section" id="editeur">
+        <h2>1. Éditeur du site</h2>
+        <p>Le site <strong>kalia-accompagnement.fr</strong> est édité par :</p>
+        <div class="legal-info-box">
+          <p><strong>Dénomination :</strong> Kalia Accompagnement</p>
+          <p><strong>Description :</strong> Plateforme facilitant l'accès à un accompagnement adapté aux besoins de chacun</p>
+          <p><strong>Statut :</strong> Entrepreneur individuel / [À compléter : forme juridique exacte]</p>
+          <p><strong>SIRET :</strong> [À compléter]</p>
+          <p><strong>Adresse :</strong> [À compléter — ville et département]</p>
+          <p><strong>Email :</strong> contact@kalia-accompagnement.fr</p>
+          <p><strong>Directeur de la publication :</strong> [À compléter — nom du responsable légal]</p>
+        </div>
+      </div>
+
+      <!-- 2. HÉBERGEUR -->
+      <div class="legal-section" id="hebergeur">
+        <h2>2. Hébergeur</h2>
+        <p>Le site est hébergé par :</p>
+        <div class="legal-info-box">
+          <p><strong>Société :</strong> Netlify, Inc.</p>
+          <p><strong>Adresse :</strong> 44 Montgomery Street, Suite 300, San Francisco, California 94104, États-Unis</p>
+          <p><strong>Site web :</strong> <a href="https://www.netlify.com" target="_blank" rel="noopener" style="color: var(--teal);">www.netlify.com</a></p>
+        </div>
+      </div>
+
+      <!-- 3. CONTACT -->
+      <div class="legal-section" id="contact-legal">
+        <h2>3. Contact</h2>
+        <p>Pour toute question relative au site ou à l'accompagnement proposé, vous pouvez nous contacter par les moyens suivants :</p>
+        <div class="legal-info-box">
+          <p><strong>Email :</strong> <a href="mailto:contact@kalia-accompagnement.fr" style="color: var(--teal);">contact@kalia-accompagnement.fr</a></p>
+          <p><strong>Formulaire de contact :</strong> <a href="contact.html" style="color: var(--teal);">Page Contact</a></p>
+        </div>
+        <p>Nous nous engageons à répondre à toute demande dans un délai raisonnable, en semaine.</p>
+      </div>
+
+      <!-- 4. PROPRIÉTÉ INTELLECTUELLE -->
+      <div class="legal-section" id="propriete">
+        <h2>4. Propriété intellectuelle</h2>
+        <p>L'ensemble des contenus présents sur le site <strong>kalia-accompagnement.fr</strong> — notamment les textes, articles, méthodes, graphismes, logos, icônes, images, la méthode REPÈRE et sa présentation — sont la propriété exclusive de Kalia Accompagnement ou font l'objet d'une autorisation d'utilisation.</p>
+        <p>Ces éléments sont protégés par les lois françaises et internationales relatives à la propriété intellectuelle et aux droits d'auteur.</p>
+        <h3>Reproduction interdite sans autorisation</h3>
+        <p>Toute reproduction, représentation, modification, publication, transmission ou dénaturation, totale ou partielle, du contenu de ce site par quelque procédé que ce soit, sans l'autorisation écrite préalable de Kalia Accompagnement, est strictement interdite et constituerait une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la Propriété Intellectuelle.</p>
+        <h3>Images</h3>
+        <p>Certaines images présentes sur le site proviennent de banques d'images libres de droits (Unsplash). Leur utilisation est conforme aux licences applicables.</p>
+      </div>
+
+      <!-- 5. RESPONSABILITÉ -->
+      <div class="legal-section" id="responsabilite">
+        <h2>5. Limitation de responsabilité</h2>
+        <h3>Exactitude des informations</h3>
+        <p>Les informations et contenus présents sur ce site sont fournis à titre indicatif. Kalia Accompagnement s'efforce d'assurer leur exactitude et leur mise à jour régulière, mais ne peut garantir l'absence d'erreur, d'omission ou d'inexactitude.</p>
+        <h3>Nature de l'accompagnement</h3>
+        <p>L'accompagnement proposé par Kalia Accompagnement ne constitue en aucun cas :</p>
+        <ul>
+          <li>Un acte médical ou paramédical</li>
+          <li>Une thérapie psychologique ou psychiatrique</li>
+          <li>Un service d'urgence ou de crise</li>
+        </ul>
+        <p>En cas de détresse psychologique sévère, de pensées suicidaires ou de trouble psychiatrique avéré, nous orientons vers les professionnels de santé compétents. En cas d'urgence, contacter le 15 (SAMU), le 3114 (numéro national de prévention du suicide) ou le 15 (SAMU).</p>
+        <h3>Disponibilité du site</h3>
+        <p>Kalia Accompagnement ne saurait être tenu responsable des interruptions d'accès au site dues à des opérations de maintenance, à des incidents techniques ou à des événements indépendants de sa volonté.</p>
+      </div>
+
+      <!-- 6. DONNÉES PERSONNELLES -->
+      <div class="legal-section" id="donnees">
+        <h2>6. Protection des données personnelles</h2>
+        <p>La collecte et le traitement des données personnelles des visiteurs du site sont régis par notre <a href="politique-confidentialite.html" style="color: var(--teal); font-weight: 600;">Politique de confidentialité</a>, consultable à tout moment.</p>
+        <p>Conformément au Règlement Général sur la Protection des Données (RGPD – Règlement UE 2016/679) et à la loi Informatique et Libertés modifiée, les utilisateurs disposent de droits sur leurs données personnelles (accès, rectification, suppression, opposition, portabilité).</p>
+        <p>Pour exercer ces droits ou pour toute question relative à la protection de vos données, contactez-nous à : <a href="mailto:contact@kalia-accompagnement.fr" style="color: var(--teal);">contact@kalia-accompagnement.fr</a></p>
+      </div>
+
+      <!-- 7. COOKIES -->
+      <div class="legal-section" id="cookies">
+        <h2>7. Cookies</h2>
+        <p>Un cookie est un petit fichier texte enregistré sur votre terminal (ordinateur, tablette, smartphone) lors de la visite d'un site web.</p>
+        <h3>Cookies utilisés sur ce site</h3>
+        <ul>
+          <li><strong>Cookies techniques :</strong> indispensables au fonctionnement du site (navigation, session). Ils ne collectent aucune donnée personnelle identifiable.</li>
+          <li><strong>Cookies analytiques :</strong> permettant de mesurer l'audience du site et d'améliorer son contenu. Ces cookies sont anonymisés.</li>
+        </ul>
+        <h3>Votre consentement</h3>
+        <p>Lors de votre première visite, un bandeau d'information vous permet d'accepter ou de refuser les cookies non essentiels. Vous pouvez également modifier vos préférences à tout moment depuis les paramètres de votre navigateur.</p>
+        <h3>Désactiver les cookies</h3>
+        <p>Vous pouvez configurer votre navigateur pour refuser l'enregistrement de cookies. Cette désactivation peut affecter certaines fonctionnalités du site.</p>
+      </div>
+
+      <!-- 8. LIENS HYPERTEXTES -->
+      <div class="legal-section" id="liens">
+        <h2>8. Liens hypertextes</h2>
+        <p>Le site kalia-accompagnement.fr peut contenir des liens vers des sites tiers. Ces liens sont fournis à titre informatif. Kalia Accompagnement n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu, leur disponibilité ou leur politique de confidentialité.</p>
+        <p>Tout site souhaitant créer un lien hypertexte vers kalia-accompagnement.fr doit obtenir l'accord préalable de l'éditeur.</p>
+      </div>
+
+      <!-- 9. DROIT APPLICABLE -->
+      <div class="legal-section" id="droit">
+        <h2>9. Droit applicable et juridiction compétente</h2>
+        <p>Les présentes mentions légales sont régies par le droit français. En cas de litige et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
+        <p>Pour toute réclamation ou différend relatif au présent site, vous pouvez nous contacter en premier lieu à l'adresse : <a href="mailto:contact@kalia-accompagnement.fr" style="color: var(--teal);">contact@kalia-accompagnement.fr</a></p>
+        <div class="legal-info-box" style="margin-top: 24px;">
+          <p><strong>Références légales :</strong></p>
+          <p>Loi n° 2004-575 du 21 juin 2004 (LCEN)</p>
+          <p>Règlement UE 2016/679 (RGPD)</p>
+          <p>Loi n° 78-17 du 6 janvier 1978 modifiée (Informatique et Libertés)</p>
+          <p>Code de la Propriété Intellectuelle</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAS DE PAGE -->
+<section class="section-dark" style="padding: 64px 0;">
+  <div class="container center-content">
+    <h2 style="font-size: 1.6rem; margin-bottom: 12px;">Une question ?</h2>
+    <p>Pour toute question relative au site ou à notre accompagnement, contactez-nous directement.</p>
+    <div class="hero-actions" style="justify-content: center; margin-top: 28px;">
+      <a href="contact.html" class="btn btn-primary">Nous contacter</a>
+      <a href="politique-confidentialite.html" class="btn btn-outline">Politique de confidentialité</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+        <p>Une plateforme d'accompagnement structuré pour retrouver de la clarté et avancer durablement.</p>
+        <div class="footer-contacts">
+          <a href="mailto:contact@kalia-accompagnement.fr">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            contact@kalia-accompagnement.fr
+          </a>
+        </div>
+        <div class="footer-social">
+          <p class="footer-social-text">Retrouvez nos conseils, ressources et actualités sur nos réseaux sociaux.</p>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/kalia.accompagnement?utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/1c29hmDRzZ/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15.5 8.5h-1.8c-.7 0-1.2.5-1.2 1.2v1.8h3l-.4 3h-2.6v7h-3v-7H7.3v-3h2.2V9.3c0-2 1.4-3.8 3.6-3.8h2.4v3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#repere">La méthode REPÈRE</a></li>
+          <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+          <li><a href="/blog/">Conseils & Ressources</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accompagnement</h4>
+        <ul>
+          <li><a href="reserver-ma-seance.html">Réserver une séance</a></li>
+          <li><a href="trouver-mon-accompagnement.html">Trouver mon accompagnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Kalia Accompagnement – Tous droits réservés</p>
+      <p>Écouter <span class="teal">•</span> Comprendre <span class="teal">•</span> Avancer</p>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[[redirects]]
+  from = "/merci"
+  to = "/merci.html"
+  status = 200
+
+# Ancienne page "Conseils" statique -> nouveau blog administrable
+[[redirects]]
+  from = "/conseils.html"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/conseils"
+  to = "/blog/"
+  status = 301
+
+# Nécessaire pour que /admin/ (Decap CMS) fonctionne correctement en SPA
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200

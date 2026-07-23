@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Kalia Accompagnement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#repere">La méthode</a></li>
+      <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+      <li><a href="/blog/">Conseils</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reserver-ma-seance.html" class="nav-cta">Réserver une séance</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="justify-content:center">Contact</div>
+    <h1>Nous contacter</h1>
+    <p>Une question ou une hésitation ? Nous vous répondons rapidement.</p>
+  </div>
+</div>
+
+<section style="background:var(--grey-bg)">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- COORDONNÉES -->
+      <div class="contact-info">
+        <div class="section-label">Coordonnées</div>
+        <h3>Comment nous joindre</h3>
+
+        <div class="contact-item">
+          <div class="c-icon">
+            <svg width="20" height="20" fill="none" stroke="#2CCBC1" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="c-title">Email</div>
+            <div class="c-val"><a href="mailto:contact@kalia-accompagnement.fr">contact@kalia-accompagnement.fr</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="c-icon">
+            <svg width="20" height="20" fill="none" stroke="#2CCBC1" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <div class="c-title">Site web</div>
+            <div class="c-val"><a href="https://www.kalia-accompagnement.fr" target="_blank">www.kalia-accompagnement.fr</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="c-icon">
+            <svg width="20" height="20" fill="none" stroke="#2CCBC1" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <div>
+            <div class="c-title">Séance découverte</div>
+            <div class="c-val">45 min · 30 € · <a href="reserver-ma-seance.html">Réserver en ligne</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULAIRE -->
+      <div style="background:#fff;border-radius:var(--radius-lg);padding:44px 40px;border:1px solid var(--grey-bd)">
+        <div class="section-label">Formulaire</div>
+        <h3 style="color:var(--navy);margin-bottom:8px">Envoyer un message</h3>
+        <p style="margin-bottom:28px;font-size:.9rem;text-align:left">Nous vous répondons sous 24h en semaine.</p>
+
+        <!--
+          NETLIFY FORMS :
+          - L'attribut data-netlify="true" active la collecte Netlify
+          - Les notifications email se configurent dans Netlify Dashboard
+            → Site settings → Forms → Notifications → Add notification → Email
+            → Entrez : contact@kalia-accompagnement.fr
+        -->
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm" onsubmit="handleContactSubmit(event)">
+          <input type="hidden" name="form-name" value="contact"/>
+          <p style="display:none"><input name="bot-field"/></p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-prenom">Prénom *</label>
+              <input type="text" id="c-prenom" name="prenom" placeholder="Votre prénom" required/>
+            </div>
+            <div class="form-group">
+              <label for="c-nom">Nom *</label>
+              <input type="text" id="c-nom" name="nom" placeholder="Votre nom" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-email">Email *</label>
+            <input type="email" id="c-email" name="email" placeholder="votre@email.fr" required/>
+          </div>
+          <div class="form-group">
+            <label for="c-tel">Téléphone</label>
+            <input type="tel" id="c-tel" name="telephone" placeholder="06 XX XX XX XX"/>
+          </div>
+          <div class="form-group">
+            <label for="c-sujet">Sujet</label>
+            <input type="text" id="c-sujet" name="sujet" placeholder="L'objet de votre message (facultatif)"/>
+          </div>
+          <div class="form-group">
+            <label for="c-message">Message *</label>
+            <textarea id="c-message" name="message" placeholder="Votre message…" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width" style="margin-top:8px">Envoyer</button>
+
+          <div class="success-msg" id="contact-success">Merci pour votre message. Nous revenons vers vous rapidement.</div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+        <p>Une plateforme d'accompagnement structuré pour retrouver de la clarté et avancer durablement.</p>
+        <div class="footer-contacts">
+          <a href="mailto:contact@kalia-accompagnement.fr"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> contact@kalia-accompagnement.fr</a>
+        </div>
+        <div class="footer-social">
+          <p class="footer-social-text">Retrouvez nos conseils, ressources et actualités sur nos réseaux sociaux.</p>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/kalia.accompagnement?utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/1c29hmDRzZ/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15.5 8.5h-1.8c-.7 0-1.2.5-1.2 1.2v1.8h3l-.4 3h-2.6v7h-3v-7H7.3v-3h2.2V9.3c0-2 1.4-3.8 3.6-3.8h2.4v3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#repere">La méthode REPÈRE</a></li>
+          <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+          <li><a href="/blog/">Conseils & Ressources</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accompagnement</h4>
+        <ul>
+          <li><a href="reserver-ma-seance.html">Réserver une séance</a></li>
+          <li><a href="trouver-mon-accompagnement.html">Trouver mon accompagnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Kalia Accompagnement – Tous droits réservés</p>
+      <p>Écouter <span class="teal">•</span> Comprendre <span class="teal">•</span> Avancer</p>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const sujet = params.get('sujet');
+  if (sujet) {
+    document.getElementById('c-sujet').value = sujet;
+  }
+});
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contactForm');
+  const data = new FormData(form);
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString()
+  }).finally(() => {
+    document.getElementById('contact-success').classList.add('show');
+    form.reset();
+    setTimeout(() => {
+      document.getElementById('contact-success').classList.remove('show');
+    }, 7000);
+  });
+}
+</script>
+</body>
+</html>

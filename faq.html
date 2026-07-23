@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ – Questions fréquentes – Kalia Accompagnement</title>
+  <meta name="description" content="Toutes les réponses à vos questions avant de réserver : pour qui, comment se déroule une séance, la méthode REPÈRE, la confidentialité, et plus encore."/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#repere">La méthode</a></li>
+      <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+      <li><a href="/blog/">Conseils</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="reserver-ma-seance.html" class="nav-cta">Réserver une séance</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="justify-content:center">Foire aux questions</div>
+    <h1>Vos questions, avant de vous lancer</h1>
+    <p>Réserver un accompagnement est une décision qui mérite d'être posée. Voici les réponses aux questions que l'on nous pose le plus souvent — pour vous aider à avancer avec confiance.</p>
+  </div>
+</div>
+
+<section style="background:var(--grey-bg)">
+  <div class="container">
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>À qui s'adresse Kalia ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Kalia s'adresse à toute personne qui traverse une période de transition ou de fragilité et ressent le besoin d'être accompagnée pour retrouver des repères.</p>
+          <p>Nous accompagnons notamment les personnes confrontées à un burn-out, une rupture, un deuil, une perte de sens, un manque de confiance en elles, des schémas relationnels répétitifs, des difficultés familiales ou une période de questionnement personnel.</p>
+          <p>Il n'est pas nécessaire d'être « au plus mal » pour être accompagné. Parfois, le simple fait de se sentir perdu ou bloqué est une raison suffisante pour demander de l'aide.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Comment savoir si cet accompagnement est fait pour moi ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Si vous avez le sentiment de tourner en rond, de ne plus savoir quelle direction prendre ou de reproduire les mêmes difficultés malgré vos efforts, cet accompagnement peut vous aider.</p>
+          <p>Notre objectif n'est pas de vous apporter des réponses toutes faites, mais de vous offrir un cadre structuré pour mieux comprendre votre situation, prendre du recul et avancer avec davantage de clarté.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Dans quelles situations pouvez-vous m'accompagner ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Nous accompagnons principalement les personnes confrontées à :</p>
+          <ul>
+            <li>un burn-out ou un épuisement professionnel ;</li>
+            <li>une rupture amoureuse ou une séparation difficile ;</li>
+            <li>un deuil ou une perte importante ;</li>
+            <li>une perte de confiance en soi ;</li>
+            <li>une perte de sens ou une transition de vie ;</li>
+            <li>des schémas relationnels qui se répètent ;</li>
+            <li>des difficultés familiales ou affectives ;</li>
+            <li>une dépendance affective ;</li>
+            <li>un sentiment de vide ou de blocage.</li>
+          </ul>
+          <p>Chaque accompagnement est entièrement personnalisé selon votre histoire et vos besoins.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Puis-je venir simplement parce que je me sens perdu(e) ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p><strong style="color:var(--navy)">Oui.</strong> Il n'est pas nécessaire d'avoir vécu un événement majeur pour ressentir le besoin d'être accompagné.</p>
+          <p>Beaucoup de personnes consultent simplement parce qu'elles ont perdu leurs repères, ne savent plus quelles décisions prendre ou ressentent un mal-être diffus qu'elles n'arrivent pas à expliquer.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Quelle est la différence entre Kalia, un coach et un psychologue ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Kalia propose un accompagnement structuré, centré sur la compréhension de votre situation actuelle et la construction d'un plan d'action adapté.</p>
+          <p>Contrairement au coaching traditionnel, notre approche prend en compte votre histoire, vos émotions et les mécanismes qui influencent vos comportements.</p>
+          <p>À la différence d'un psychologue, nous ne réalisons ni diagnostic ni prise en charge thérapeutique. Lorsque cela est nécessaire, nous pouvons vous orienter vers un professionnel de santé.</p>
+          <p>Notre rôle est de vous aider à retrouver des repères, reprendre confiance et avancer progressivement grâce à une méthode claire et personnalisée.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Comment se déroule une séance ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Chaque séance dure environ 45 minutes. Elle alterne plusieurs temps complémentaires :</p>
+          <ul>
+            <li>un temps d'écoute pour comprendre votre situation ;</li>
+            <li>un temps d'échange afin de prendre du recul ;</li>
+            <li>un travail de clarification autour de vos besoins et de vos objectifs ;</li>
+            <li>la mise à jour de votre feuille de route personnalisée ;</li>
+            <li>la définition d'actions concrètes à mettre en œuvre entre deux séances.</li>
+          </ul>
+          <p>Chaque rendez-vous s'adapte à votre rythme et à votre évolution.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Comment fonctionne la méthode REPÈRE ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>La méthode REPÈRE constitue le fil conducteur de nos accompagnements. Elle repose sur six étapes :</p>
+          <ul>
+            <li><strong style="color:var(--navy)">R</strong>alentir pour prendre le temps d'observer votre situation.</li>
+            <li><strong style="color:var(--navy)">E</strong>xplorer vos émotions, votre histoire et vos difficultés.</li>
+            <li><strong style="color:var(--navy)">P</strong>rendre conscience des mécanismes qui vous freinent.</li>
+            <li><strong style="color:var(--navy)">É</strong>laborer une stratégie adaptée à vos besoins.</li>
+            <li><strong style="color:var(--navy)">R</strong>éaliser des actions concrètes et progressives.</li>
+            <li><strong style="color:var(--navy)">É</strong>valuer les avancées afin d'ajuster l'accompagnement si nécessaire.</li>
+          </ul>
+          <p>Chaque personne avance à son propre rythme. Il ne s'agit pas de suivre un programme figé mais d'adapter la méthode à votre parcours.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>À quoi servent les documents de suivi ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Les documents de suivi permettent de garder une vision claire de votre évolution. Ils servent à :</p>
+          <ul>
+            <li>définir vos objectifs ;</li>
+            <li>suivre les actions mises en place ;</li>
+            <li>mesurer vos progrès ;</li>
+            <li>identifier les difficultés rencontrées ;</li>
+            <li>préparer les séances suivantes.</li>
+          </ul>
+          <p>Ils constituent un véritable fil conducteur tout au long de l'accompagnement.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Combien de séances faut-il prévoir ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Il n'existe pas de durée standard. Certaines personnes trouvent des réponses en quelques séances. D'autres choisissent un accompagnement plus progressif afin d'ancrer durablement les changements.</p>
+          <p>Vous restez libre d'interrompre ou de poursuivre l'accompagnement à tout moment.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Les séances sont-elles confidentielles ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p><strong style="color:var(--navy)">Oui.</strong> Tous les échanges sont strictement confidentiels.</p>
+          <p>Nous accordons une importance particulière à la création d'un espace de confiance où chacun peut s'exprimer librement, sans jugement.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Comment réserver ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Vous pouvez réserver directement votre séance en ligne ou nous contacter via le formulaire présent sur le site.</p>
+          <p>Si vous hésitez encore, nous serons ravis de répondre à vos questions avant toute réservation.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Pourquoi choisir Kalia ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Chez Kalia, nous sommes convaincus qu'il n'existe pas de solution universelle. Chaque parcours est unique. C'est pourquoi nous proposons un accompagnement structuré, mais entièrement personnalisé.</p>
+          <p>Notre approche repose sur une méthode claire, des outils de suivi concrets et un véritable travail de réflexion afin de vous aider à retrouver vos propres repères.</p>
+          <p>Notre objectif n'est pas de vous dire quoi faire, mais de vous donner les moyens de mieux comprendre votre situation et d'avancer durablement.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Quels sont nos engagements ?</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Nous nous engageons à :</p>
+          <ul>
+            <li>vous accueillir avec bienveillance ;</li>
+            <li>vous offrir un espace d'écoute sans jugement ;</li>
+            <li>respecter la confidentialité de tous les échanges ;</li>
+            <li>adapter l'accompagnement à votre rythme ;</li>
+            <li>construire avec vous une feuille de route claire et personnalisée ;</li>
+            <li>vous proposer des pistes de réflexion et des actions concrètes pour avancer progressivement.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Ce que nous attendons de vous</span>
+          <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Un accompagnement est avant tout un travail d'équipe. Pour qu'il soit pleinement bénéfique, nous vous invitons à :</p>
+          <ul>
+            <li>venir avec sincérité et ouverture ;</li>
+            <li>vous investir dans la démarche ;</li>
+            <li>mettre en pratique, dans la mesure du possible, les actions définies ensemble ;</li>
+            <li>compléter les documents de suivi afin de mesurer votre évolution.</li>
+          </ul>
+          <p>Chaque petit pas compte. Notre rôle est de vous accompagner tout au long de ce chemin, à votre rythme, dans un cadre bienveillant et structuré.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-dark">
+  <div class="container center-content">
+    <div class="section-label light" style="justify-content:center">Prêt(e) à avancer ?</div>
+    <h2>Encore une hésitation ?</h2>
+    <p>Si une question reste sans réponse, écrivez-nous simplement. Sinon, la première séance découverte est le meilleur point de départ.</p>
+    <div class="hero-actions" style="justify-content:center;margin-top:36px">
+      <a href="reserver-ma-seance.html?pack=decouverte" class="btn btn-primary" style="font-size:1rem;padding:15px 32px">Réserver la séance découverte — 30 €</a>
+      <a href="contact.html" class="btn btn-outline" style="font-size:1rem;padding:15px 32px">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+        <p>Une plateforme d'accompagnement structuré pour retrouver de la clarté, sortir des schémas répétitifs et avancer durablement.</p>
+        <div class="footer-contacts">
+          <a href="mailto:contact@kalia-accompagnement.fr"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> contact@kalia-accompagnement.fr</a>
+        </div>
+        <div class="footer-social">
+          <p class="footer-social-text">Retrouvez nos conseils, ressources et actualités sur nos réseaux sociaux.</p>
+          <div class="footer-social-icons">
+            <a href="https://www.instagram.com/kalia.accompagnement?utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/1c29hmDRzZ/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15.5 8.5h-1.8c-.7 0-1.2.5-1.2 1.2v1.8h3l-.4 3h-2.6v7h-3v-7H7.3v-3h2.2V9.3c0-2 1.4-3.8 3.6-3.8h2.4v3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#repere">La méthode REPÈRE</a></li>
+          <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
+          <li><a href="/blog/">Conseils & Ressources</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="a-propos.html">À propos de Kalia</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accompagnement</h4>
+        <ul>
+          <li><a href="reserver-ma-seance.html">Réserver une séance</a></li>
+          <li><a href="trouver-mon-accompagnement.html">Trouver mon accompagnement</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Kalia Accompagnement – Tous droits réservés</p>
+      <p>Écouter <span class="teal">•</span> Comprendre <span class="teal">•</span> Avancer</p>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+function toggleFaq(btn) {
+  btn.closest('.faq-item').classList.toggle('open');
+}
+</script>
+</body>
+</html>
