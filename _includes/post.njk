@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ title }} – {{ site.name }}</title>
+  <meta name="description" content="{{ description }}"/>
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
+
+  <!-- Open Graph / réseaux sociaux -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="{{ title }}"/>
+  <meta property="og:description" content="{{ description }}"/>
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+  <meta property="og:image" content="{{ image | absoluteUrl(site.url) }}"/>
+  <meta property="og:locale" content="{{ site.locale }}"/>
+  <meta property="article:published_time" content="{{ date | isoDate }}"/>
+  {% for cat in categories %}<meta property="article:tag" content="{{ cat }}"/>
+  {% endfor %}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="{{ title }}"/>
+  <meta name="twitter:description" content="{{ description }}"/>
+  <meta name="twitter:image" content="{{ image | absoluteUrl(site.url) }}"/>
+
+  <!-- Données structurées (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ title | jsonify | safe }},
+    "description": {{ description | jsonify | safe }},
+    "image": "{{ image | absoluteUrl(site.url) }}",
+    "datePublished": "{{ date | isoDate }}",
+    "author": { "@type": "Organization", "name": "{{ site.name }}" },
+    "publisher": { "@type": "Organization", "name": "{{ site.name }}" },
+    "mainEntityOfPage": "{{ site.url }}{{ page.url }}"
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/shared.css"/>
+</head>
+<body>
+
+{% include "nav.njk" %}
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="justify-content:center">{{ categories | join(" · ") }}</div>
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+    <p class="article-meta">Publié le {{ date | formatDate }} · {{ content | readingTime }} min de lecture</p>
+  </div>
+</div>
+
+<section style="background:var(--grey-bg)">
+  <div class="container">
+    <div class="article-full">
+
+      {% if image %}
+      <div style="margin-bottom:40px;border-radius:var(--radius-lg);overflow:hidden">
+        <img src="{{ image }}" alt="{{ title }}" style="width:100%;display:block"/>
+      </div>
+      {% endif %}
+
+      {{ content | safe }}
+
+      <!-- ENCADRÉ APPEL À L'ACTION -->
+      <div class="article-cta-box">
+        <div class="section-label" style="justify-content:flex-start">Passer à l'étape suivante</div>
+        <h3>Envie d'en parler avec quelqu'un ?</h3>
+        <p>Une séance découverte de 45 minutes suffit pour faire le point sur votre situation et déterminer, ensemble, l'accompagnement le plus adapté.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:20px">
+          <a href="/reserver-ma-seance.html?pack=decouverte" class="btn btn-primary">Réserver ma séance découverte</a>
+          <a href="/trouver-mon-accompagnement.html" class="btn btn-outline-navy">Je trouve mon accompagnement</a>
+        </div>
+      </div>
+
+      <!-- ARTICLES SIMILAIRES -->
+      {% set related = collections.posts | relatedPosts(page.url, categories, 3) %}
+      {% if related | length > 0 %}
+      <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--grey-bd)">
+        <div class="section-label">Articles similaires</div>
+        <div class="related-grid">
+          {% for p in related %}
+          <a class="article-card" href="{{ p.url }}">
+            <div class="article-thumb">
+              <img src="{{ p.data.image }}" alt="{{ p.data.title }}" loading="lazy"/>
+            </div>
+            <div class="article-body">
+              <div class="article-cat">{{ p.data.categories | join(" · ") }}</div>
+              <div class="article-title">{{ p.data.title }}</div>
+              <div class="article-link">Lire l'article <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <div style="margin-top:48px">
+        <a href="/blog/" style="font-size:.85rem;font-weight:600;color:var(--teal-d)">← Retour à Conseils & Ressources</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "footer.njk" %}
+
+<script src="/shared.js"></script>
+</body>
+</html>

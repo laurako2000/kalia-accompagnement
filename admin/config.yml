@@ -1,0 +1,83 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Active le workflow éditorial (brouillon → relecture → publié)
+# Mettre "simple" à la place de "editorial_workflow" pour publier directement.
+publish_mode: editorial_workflow
+
+locale: "fr"
+
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://www.kalia-accompagnement.fr
+display_url: https://www.kalia-accompagnement.fr
+logo_url: /images/header.png
+
+collections:
+  - name: "posts"
+    label: "Articles de blog"
+    label_singular: "Article"
+    description: "Chaque article publié ici génère automatiquement une page sur /blog/ avec son propre titre SEO, sa méta-description, son image, sa date et ses catégories."
+    folder: "src/blog/posts"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    view_filters:
+      - label: "Burn-out"
+        field: categories
+        pattern: "Burn-out"
+      - label: "Confiance en soi"
+        field: categories
+        pattern: "Confiance en soi"
+      - label: "Séparation"
+        field: categories
+        pattern: "Séparation"
+      - label: "Relations"
+        field: categories
+        pattern: "Relations"
+    fields:
+      - label: "Titre"
+        name: "title"
+        widget: "string"
+        hint: "Le titre affiché en haut de l'article et dans les résultats Google."
+
+      - label: "Méta-description (SEO)"
+        name: "description"
+        widget: "text"
+        hint: "Résumé affiché sous le titre dans Google et sur les réseaux sociaux. 150–160 caractères recommandés."
+
+      - label: "Date de publication"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+        picker_utc: true
+
+      - label: "Image à la une"
+        name: "image"
+        widget: "image"
+        hint: "Utilisée comme vignette sur /blog/, image de l'article, et image de partage (réseaux sociaux)."
+
+      - label: "Catégories"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        min: 1
+        options:
+          - "Burn-out"
+          - "Confiance en soi"
+          - "Séparation"
+          - "Relations"
+          - "Brouillard émotionnel"
+          - "Transition de vie"
+          - "Schémas répétitifs"
+
+      - label: "Contenu de l'article"
+        name: "body"
+        widget: "markdown"
+        hint: "Utilisez les titres (##) pour structurer l'article, comme dans les articles existants."
