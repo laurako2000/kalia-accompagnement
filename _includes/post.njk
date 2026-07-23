@@ -49,10 +49,7 @@
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="container">
-    <div class="section-label" style="justify-content:center">{{ categories | join(" · ") }}</div>
-    <h1>{{ title }}</h1>
-    <p>{{ description }}</p>
-    <p class="article-meta">Publié le {{ date | formatDate }} · {{ content | readingTime }} min de lecture</p>
+   <h1>{{ title }}</h1>
   </div>
 </div>
 
@@ -67,7 +64,13 @@
       {% endif %}
 
       {{ content | safe }}
-
+<div style="margin-top:50px;padding-top:24px;border-top:1px solid #ddd;text-align:right;">
+  <p>{{ description }}</p>
+  <p class="article-meta">
+    Publié le {{ date | formatDate }} · {{ content | readingTime }} min de lecture
+  </p>
+  <p>{{ categories | join(" · ") }}</p>
+</div>
       <!-- ENCADRÉ APPEL À L'ACTION -->
       <div class="article-cta-box">
         <div class="section-label" style="justify-content:flex-start">Passer à l'étape suivante</div>
