@@ -50,7 +50,7 @@ permalink: /blog/index.html
 
     <div class="filter-bar" id="filterBar">
       <button class="filter-btn active" onclick="filterArticles('all',this)">Tous</button>
-      {% for cat in categories %}
+      {% for cat in blogCategories %}
       <button class="filter-btn" onclick="filterArticles('{{ cat | slugify }}',this)">{{ cat }}</button>
       {% endfor %}
     </div>
