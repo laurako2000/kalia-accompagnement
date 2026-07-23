@@ -355,7 +355,7 @@ function applyPack(key) {
 // ── Clic sur une des 4 cartes de formule ──
 function selectOffer(key) {
   if (REDIRECT_TO_FORMULES.includes(key)) {
-    window.location.href = 'formules-tarifs./#packs';
+    window.location.href = '/formules-tarifs/#packs';
     return;
   }
   applyPack(key);
