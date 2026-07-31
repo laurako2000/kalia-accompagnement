@@ -127,24 +127,9 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#repere">La méthode</a></li>
-      <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
-      <li><a href="/blog/">Conseils</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="a-propos.html">À propos</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="reserver-ma-seance.html" class="nav-cta">Réserver une séance</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+{% include "navbar.njk" %}
+
+<main>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -242,11 +227,12 @@
         <ul>
           <li><strong>Calendly</strong> — gestion des prises de rendez-vous ;</li>
           <li><strong>PayPal</strong> — traitement sécurisé des paiements, lorsque ce mode de paiement est utilisé ;</li>
+          <li><strong>OVH</strong> — nom de domaine et hébergement de la messagerie e-mail ;</li>
           <li><strong>Netlify</strong> — hébergement du site internet.</li>
         </ul>
         <p>Ces prestataires n'ont accès qu'aux informations strictement nécessaires à l'exécution de leurs services et sont soumis à leurs propres obligations en matière de protection des données.</p>
         <h3>Transferts de données hors Union européenne</h3>
-        <p>Certains de ces prestataires (notamment PayPal et Calendly) sont établis aux États-Unis. À ce titre, vos données peuvent être transférées hors de l'Union européenne. Ces transferts sont encadrés par des garanties appropriées, telles que les clauses contractuelles types de la Commission européenne ou l'adhésion au Data Privacy Framework, conformément au RGPD.</p>
+        <p>Certains de ces prestataires (notamment PayPal et Calendly) sont établis aux États-Unis. À ce titre, vos données peuvent être transférées hors de l'Union européenne. Ces transferts sont encadrés par des garanties appropriées, telles que les clauses contractuelles types de la Commission européenne ou l'adhésion au Data Privacy Framework, conformément au RGPD. Les prestataires établis dans l'Union européenne, comme OVH, ne donnent lieu à aucun transfert hors UE.</p>
       </div>
 
       <!-- 6. CONSERVATION -->
@@ -314,70 +300,16 @@
     <h2 style="font-size: 1.6rem; margin-bottom: 12px;">Une question ?</h2>
     <p>Pour toute question relative à vos données ou à notre accompagnement, contactez-nous directement.</p>
     <div class="hero-actions" style="justify-content: center; margin-top: 28px;">
-      <a href="contact.html" class="btn btn-primary">Nous contacter</a>
-      <a href="mentions-legales.html" class="btn btn-outline">Mentions légales</a>
+      <a href="/contact/" class="btn btn-primary">Nous contacter</a>
+      <a href="/mentions-legales/" class="btn btn-outline">Mentions légales</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
-        <p>Des accompagnements fondés sur la méthode REPÈRE pour retrouver de la clarté, reprendre confiance et avancer durablement.</p>
-        <div class="footer-contacts">
-          <a href="mailto:contact@kalia-accompagnement.fr">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            contact@kalia-accompagnement.fr
-          </a>
-        </div>
-        <div class="footer-social">
-          <p class="footer-social-text">Retrouvez nos conseils, ressources et actualités sur nos réseaux sociaux.</p>
-          <div class="footer-social-icons">
-            <a href="https://www.instagram.com/kalia.accompagnement?utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
-            </a>
-            <a href="https://www.facebook.com/share/1c29hmDRzZ/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15.5 8.5h-1.8c-.7 0-1.2.5-1.2 1.2v1.8h3l-.4 3h-2.6v7h-3v-7H7.3v-3h2.2V9.3c0-2 1.4-3.8 3.6-3.8h2.4v3z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="index.html#repere">La méthode REPÈRE</a></li>
-          <li><a href="formules-tarifs.html">Formules & Tarifs</a></li>
-          <li><a href="/blog/">Conseils & Ressources</a></li>
-          <li><a href="a-propos.html">À propos</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Accompagnement</h4>
-        <ul>
-          <li><a href="reserver-ma-seance.html">Réserver une séance</a></li>
-          <li><a href="trouver-mon-accompagnement.html">Trouver mon accompagnement</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Informations</h4>
-        <ul>
-          <li><a href="mentions-legales.html">Mentions légales</a></li>
-          <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Kalia Accompagnement – Tous droits réservés</p>
-      <p>Écouter <span class="teal">•</span> Comprendre <span class="teal">•</span> Avancer</p>
-    </div>
-  </div>
-</footer>
+</main>
 
-<script src="shared.js"></script>
+{% include "footer.njk" %}
+
+<script src="/shared.js"></script>
 </body>
 </html>
