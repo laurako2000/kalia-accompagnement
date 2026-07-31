@@ -158,7 +158,7 @@
         <div class="form-group" style="display:flex;align-items:flex-start;gap:10px;margin-top:4px">
           <input type="checkbox" id="cgv" name="cgv" required style="width:auto;margin-top:3px;flex-shrink:0"/>
           <label for="cgv" style="font-weight:400;font-size:.84rem;color:var(--grey-tx)">
-            J'accepte les <a href="mentions-legales.html" target="_blank" style="color:var(--teal)">conditions générales de vente</a> et la <a href="politique-confidentialite.html" target="_blank" style="color:var(--teal)">politique de confidentialité</a>.
+            J'accepte les <a href="/mentions-legales/" target="_blank" style="color:var(--teal)">conditions générales de vente</a> et la <a href="/politique-confidentialite/" target="_blank" style="color:var(--teal)">politique de confidentialité</a>.
           </label>
         </div>
 
@@ -193,7 +193,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
+        <a href="/" class="logo">KALIA<span>ACCOMPAGNEMENT</span></a>
         <p>Une plateforme d'accompagnement structuré pour retrouver de la clarté et avancer durablement.</p>
         <div class="footer-contacts">
           <a href="mailto:contact@kalia-accompagnement.fr">
@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // cette URL comme "URL de retour" dans les paramètres de chaque lien PayPal
 // (PayPal Dashboard → Paiements → Liens de paiement → Modifier → Options
 // avancées → URL de retour après paiement) :
-//   https://kalia-accompagnement.fr/reserver-ma-seance.html?confirmed=1
+//   https://kalia-accompagnement.fr/reserver-ma-seance/?confirmed=1
 //
 function handleReservationSubmit(e) {
   e.preventDefault();
@@ -416,7 +416,7 @@ function handleReservationSubmit(e) {
       // Pas encore de lien PayPal configuré pour cette formule (ex : Séance
       // de suivi) : on n'affiche jamais de lien mort, on oriente la personne
       // vers le formulaire de contact pour finaliser sa demande.
-      window.location.href = 'contact.html?sujet=' + encodeURIComponent(PACKS[currentPack].title);
+      window.location.href = '/contact/?sujet=' + encodeURIComponent(PACKS[currentPack].title);
     }
   });
 }
