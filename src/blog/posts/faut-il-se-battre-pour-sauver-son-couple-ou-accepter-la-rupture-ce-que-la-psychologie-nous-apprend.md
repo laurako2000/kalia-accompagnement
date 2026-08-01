@@ -5,7 +5,7 @@ description: Faut-il se battre pour sauver son couple ou accepter la rupture ?
   Découvrez ce que la psychologie nous apprend pour prendre une décision sans
   culpabilité et comprendre vos mécanismes.
 date: 2026-08-01
-image: /images/uploads/chatgpt-image-1-août-2026-06_32_03.png
+image: /images/uploads/deception-amoureuse-1200x800-200ko.jpg
 categories:
   - Séparation
 ---
