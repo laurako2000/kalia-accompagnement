@@ -88,4 +88,4 @@ Chez Kalia Accompagnement, nous ne sommes pas là pour vous dire s'il faut reste
 
 Parce qu'une décision prise sous la peur, la culpabilité ou la pression est rarement une décision apaisée. Une décision comprise, réfléchie et assumée permet souvent d'avancer avec davantage de sérénité, quel que soit le chemin choisi.
 
-👉 [Réserver un échange découverte de 15 minutes](/reserver-ma-seance/)
+👉 [Réserver une séance](/reserver-ma-seance/)
