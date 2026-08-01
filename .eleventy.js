@@ -10,7 +10,7 @@ module.exports = function (eleventyConfig) {
   // ── Collection des articles de blog (triés du plus récent au plus ancien) ──
   eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi
-      .getFilteredByGlob("blog/posts/*.md")
+      .getFilteredByGlob("src/blog/posts/*.md")
       .sort((a, b) => b.date - a.date);
   });
 
