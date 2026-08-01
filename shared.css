@@ -419,7 +419,9 @@ textarea { min-height:120px; resize:vertical; }
   .repere-steps { grid-template-columns:repeat(3,1fr); }
   .footer-grid { grid-template-columns:1fr 1fr; }
   .article-grid { grid-template-columns:1fr 1fr; }
-  .value-grid { grid-template-columns:1fr 1fr; }
+  .value-grid {
+    grid-template-columns:1fr;
+}
 }
 /* ===== TABLETTE + MOBILE ===== */
 
