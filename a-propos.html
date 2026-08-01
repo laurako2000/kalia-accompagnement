@@ -53,7 +53,7 @@
   </p>
 </div>
 </div>
-    <div class="value-grid" style="max-width:1120px;margin:48px auto 0;grid-template-columns:repeat(3,1fr);gap:36px">
+    <div class="value-grid" style="max-width:1120px;margin:48px auto 0;gap:36px">
       <div class="value-card">
         <div class="team-disc" style="background:var(--navy)">LK</div>
         <h4>Laura</h4>
@@ -134,6 +134,20 @@
   overflow-wrap:break-word;
 
   }
+    .mission-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 64px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .mission-stats {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
  
 </section>
@@ -164,7 +178,7 @@
       <p style="font-size:1.05rem;line-height:1.8">Kalia accompagne les femmes et les hommes dans les transitions de vie pour les aider à retrouver un cap, comprendre ce qu'ils traversent, sortir des schémas qui freinent et avancer vers une vie plus alignée avec leurs aspirations.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;border-radius:var(--radius-lg);overflow:hidden">
+   <div class="mission-stats">
       <div style="background:var(--navy);padding:36px 28px">
         <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:2.5rem;color:var(--teal);margin-bottom:8px">100%</div>
         <div style="font-weight:600;color:#fff;margin-bottom:8px">En visio</div>
