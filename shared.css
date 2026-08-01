@@ -458,7 +458,7 @@ textarea { min-height:120px; resize:vertical; }
 
 /* --- Bloc 3 : ligne horloge (page Contact) --- */
 .rdv-clock {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 16px;
   margin-top: 12px;
