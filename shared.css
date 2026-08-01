@@ -429,3 +429,59 @@ textarea { min-height:120px; resize:vertical; }
 /* ── ANIMATIONS ── */
 .fade-in { opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease; }
 .fade-in.visible { opacity:1; transform:translateY(0); }
+
+/* ============================================================
+   KALIA — Blocs "15 minutes offert" (Calendly)
+   À COLLER À LA FIN de ton fichier shared.css
+   Aligné sur tes variables (--navy, --teal, --terracotta,
+   --grey-bd, --grey-tx, --white, --radius, --radius-lg).
+   Les blocs 1 et 4 n'ont besoin d'AUCUN CSS : ils réutilisent
+   .section-dark et .btn.btn-primary.
+   ============================================================ */
+
+/* --- Bloc 2 : encadré blanc (page d'accueil) --- */
+.hesit-box {
+  background: var(--white);
+  border: 1px solid var(--grey-bd);
+  border-left: 4px solid var(--teal);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.hesit-box .hesit-text { flex: 1; min-width: 240px; }
+.hesit-box h3 { color: var(--navy); margin: 0 0 6px; }
+.hesit-box p  { color: var(--grey-tx); text-align: left; margin: 0; max-width: 520px; }
+
+/* --- Bloc 3 : ligne horloge (page Contact) --- */
+.rdv-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 22px;
+  background: var(--white);
+  border: 1px solid var(--grey-bd);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.rdv-clock:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(6,27,59,.09);
+}
+.rdv-clock__ic {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: rgba(44,203,193,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rdv-clock__txt { display: flex; flex-direction: column; line-height: 1.35; }
+.rdv-clock__txt strong { color: var(--navy); font-size: 1rem; }
+.rdv-clock__cta { color: var(--terracotta); font-weight: 600; font-size: .92rem; }
