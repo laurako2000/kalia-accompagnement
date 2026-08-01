@@ -8,7 +8,7 @@ publish_mode: editorial_workflow
 
 locale: "fr"
 
-media_folder: "src/images/uploads"
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 site_url: https://www.kalia-accompagnement.fr
@@ -20,7 +20,7 @@ collections:
     label: "Articles de blog"
     label_singular: "Article"
     description: "Chaque article publié ici génère automatiquement une page sur /blog/ avec son propre titre SEO, sa méta-description, son image, sa date et ses catégories."
-    folder: "src/blog/posts"
+    folder: "blog/posts"
     create: true
     delete: true
     slug: "{{slug}}"
