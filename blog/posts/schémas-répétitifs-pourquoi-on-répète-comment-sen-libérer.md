@@ -8,7 +8,7 @@ image: /images/uploads/schéma-repetitif.png
 categories:
   - Schémas répétitifs
 ---
-# Pourquoi répétons-nous toujours les mêmes schémas ? Comprendre la répétition pour enfin s'en libérer
+# Comprendre la répétition pour enfin s'en libérer
 
 « Pourquoi est-ce que je retombe toujours sur le même type de partenaire ? Pourquoi les mêmes conflits reviennent-ils, même quand je change de travail, de ville ou de relation ? Pourquoi ai-je l'impression de refaire les mêmes erreurs alors que je sais qu'elles me font souffrir ? »
 
